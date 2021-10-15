@@ -2,7 +2,6 @@ package ru.dataart.academy.java;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 
 public class Calculator {
@@ -12,15 +11,13 @@ public class Calculator {
      * @return - sum of firstNumber + secondNumber
      */
     public Integer getSum(List<Integer> firstNumber, List<Integer> secondNumber) {
-        Collections.reverse(firstNumber);
-        Collections.reverse(secondNumber);
         int reverseFirstNumber = 0;
         int reverseSecondNumber = 0;
-        for (Integer integer : firstNumber) {
-            reverseFirstNumber = reverseFirstNumber * 10 + integer;
+        for (int i = firstNumber.size() - 1; i > -1; i--) {
+            reverseFirstNumber = reverseFirstNumber * 10 + firstNumber.get(i);
         }
-        for (Integer integer : secondNumber) {
-            reverseSecondNumber = reverseSecondNumber * 10 + integer;
+        for (int i = secondNumber.size() - 1; i > -1; i--) {
+            reverseSecondNumber = reverseSecondNumber * 10 + secondNumber.get(i);
         }
         return reverseFirstNumber + reverseSecondNumber;
     }
