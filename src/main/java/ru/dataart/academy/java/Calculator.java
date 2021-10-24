@@ -11,15 +11,17 @@ public class Calculator {
      * @return - sum of firstNumber + secondNumber
      */
     public Integer getSum(List<Integer> firstNumber, List<Integer> secondNumber) {
-        int reverseFirstNumber = 0;
-        int reverseSecondNumber = 0;
-        for (int i = firstNumber.size() - 1; i > -1; i--) {
-            reverseFirstNumber = reverseFirstNumber * 10 + firstNumber.get(i);
+        int sum = 0;
+        int maxSize = Math.max(firstNumber.size(), secondNumber.size());
+        for (int i = 0; i < maxSize; i++) {
+            if (firstNumber.size() > i) {
+                sum +=  (firstNumber.get(i) * Math.pow(10, i));
+            }
+            if (secondNumber.size() > i) {
+                sum += secondNumber.get(i) * Math.pow(10, i);
+            }
         }
-        for (int i = secondNumber.size() - 1; i > -1; i--) {
-            reverseSecondNumber = reverseSecondNumber * 10 + secondNumber.get(i);
-        }
-        return reverseFirstNumber + reverseSecondNumber;
+        return sum;
     }
 
     /**
@@ -30,10 +32,8 @@ public class Calculator {
      */
     public <T> List<T> getOddElements(List<T> list) {
         List<T> resultList = new ArrayList<>();
-        for (int i = 0; i < list.size(); i++) {
-            if (i % 2 == 0) {
-                resultList.add(list.get(i));
-            }
+        for (int i = 0; i < list.size(); i += 2) {
+            resultList.add(list.get(i));
         }
         return resultList;
     }
